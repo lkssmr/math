@@ -1,0 +1,594 @@
+\documentclass[11pt,letterpaper, onecolumn, addpoints, answers]{exam}
+\usepackage[ngerman]{babel}
+\newcommand{\la}{\lambda}
+\newcommand{\dl}{\Delta \lambda}
+\newcommand{\Ra}{\Rightarrow}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+%\usepackage{ntheorem}
+\usepackage{chngcntr}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{mathtools}
+\pgfplotsset{compat=1.15}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\geometry{tmargin=25mm, bmargin=30mm, lmargin=20mm, rmargin=40mm}
+\usepackage{mathtools}
+\usepackage{drawmatrix}
+%\theoremstyle{defintion}
+\newtheorem {satz}{Satz}
+\usepackage{pdfpages}
+\bibliographystyle{abbrv}
+\usepackage{lastpage}
+\usepackage[fixFPpow]{tabularcalc}
+\usepackage{xcolor}
+\newtheorem{geg}{Gegeben}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\graphicspath{Bilder/}
+\usepackage{chngcntr}
+\usepackage{mathrsfs}
+
+\usepackage{thmtools}
+
+\usepackage{svg}
+
+\checkboxchar{$\Box$}
+\checkedchar{$\blacksquare$}
+
+\renewcommand{\thequestion}{\thesection.\arabic{question}}
+%\patchcmd{\questions}{10.}{\thequestion.}{}{}% fix left margin
+
+%\renewcommand{\listtheoremname}{Definitionsverzeichnis}
+
+\renewcommand{\d}{\text{d}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\x}{\cdot}
+
+\usepackage{multicol}
+\usepackage{mdframed}
+\usepackage{fancyhdr}
+
+\renewenvironment{TheSolution}{\begin{mdframed}[skipabove=\baselineskip,innertopmargin=\baselineskip,innerbottommargin=\baselineskip]
+\textbf{Lösung:}\enspace\ignorespaces}{\end{mdframed}}
+
+\hsword{erreichte NP} 
+\hpword{mögliche NP}
+\htword{$\sum$}
+\hqword{Aufgabe} 
+
+\vsword{erreichte NP} 
+\vpword{mögliche NP}
+\vtword{$\sum$}
+\vqword{Aufgabe} 
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\renewcommand{\theequation}{\textsf{\arabic{section}.\arabic{equation}}}
+\counterwithin*{equation}{section}
+\counterwithin*{question}{section}
+\usepackage{forest}
+\usepackage{enumitem}
+\usepackage{verbatim}
+
+\setlength{\marginparwidth}{4cm}
+
+\usepackage{titlesec}
+
+\usepackage[sffamily]{roboto}
+
+\usepackage{etoolbox}
+
+\titleformat*{\section}{\centering \large\bfseries \sffamily}
+\titleformat*{\subsection}{\large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+
+\pointformat{(\thepoints)}
+\pointname{Be}
+
+\runningheader{}{}{Name:\fillin[][1.5in]}
+\runningfooter{}{}{\textsf{Seite \thepage\ von \numpages}}
+
+\firstpageheader{Mathematik}{}{Note (NP): \fillin[][0.75in]}
+\firstpagefooter{}{}{\textsf{Seite \thepage\ von \numpages}}
+
+\hpgword{Seite:}
+
+\totalformat{\textsf{A\thequestion:\;\textbf{\totalpoints}}}
+
+\title{Aufgaben zum Skript ``Mathematik 9''}
+\author{Lukas Semrau}
+
+%\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+
+\printanswers
+\renewcommand{\solutiontitle}{\noindent\textbf{Lösung:}\enspace}
+
+\pointsinrightmargin
+\pointsdroppedatright  %Self-explanatory
+\boxedpoints
+
+%\qformat{\thequestion:~(\thequestiontitle)}
+
+  \definecolor{theme}{HTML}{383e79}
+  \definecolor{term}{HTML}{009b8e}
+  \definecolor{termref}{HTML}{008080}
+  \definecolor{correct}{HTML}{383e79}
+
+\qformat{\color{theme}\textbf{Aufgabe \thequestion: \thequestiontitle}\dotfill\totalpoints BE}
+
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{decorations.pathmorphing}
+\usepgflibrary{arrows.meta}
+
+\newtheoremstyle{def} % name
+    {\topsep}                    % Space above
+    {\topsep}                    % Space below
+    {\small \sffamily}                   % Body font
+    {}                           % Indent amount
+    {\bfseries\sffamily \small }                   % Theorem head font
+    {:}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{def}
+\newtheorem*{be}{zu den Punkten}
+
+\begin{document}
+
+{
+    \begin{tikzpicture}[remember picture,overlay,anchor=north west,font=\normalsize]
+      \coordinate (right bottom) at ([yshift=-2em]current page.north east);
+      \coordinate (left top) at (current page.north west);
+      \coordinate (right top) at (current page.north east);
+      \path let \p1 = (right bottom), \p2 = (current page.north west) in
+        coordinate (left bottom) at (\x2, \y1);
+
+      \path (left top) -- (left bottom)
+        node[midway, right, text=theme, align=left, xshift=1em]
+          {Mathematik 9}
+        -- (right bottom) -- (right top)
+        node[midway, left, text=white, align=right, xshift=-1em](mw)
+          {\textsf{\raisebox{-1pt}{lukas-semrau.de} }}
+        node[below left=0 of mw](mwne) {};
+
+      \path (left bottom) -- (right bottom)
+        node[midway, below=4\baselineskip](titlepos) {};
+
+      \path let \p1 = (mwne), \p2 = (right bottom) in coordinate (mw left bottom) at (\x1, \y2);
+
+      \begin{scope}[on background layer]
+        \fill[fill=theme, opacity=0.1] (left top) rectangle (mw left bottom);
+        \fill[fill=theme] (mw left bottom) rectangle (right top);
+      \end{scope}
+
+      \node[anchor=north, font=\LARGE](title) at (titlepos)
+        {Aufgaben zu  \textbf{\textcolor{theme}{Mathematik 9.}} \textit{Skript.}};
+      \node[below=\baselineskip, font=\normalsize, align=center, inner sep=0.5em, text=black, text width=0.8\paperwidth](subtitle) at (title)
+        {%
+          Alle Aufgaben sind sauber, ordentlich und mit ausführlichem Rechenweg zu bearbeiten. \vspace{1em} \\*
+          %
+        };
+      \node[below=2.8\baselineskip, font=\footnotesize, align=center](author) at (subtitle)
+        {Lukas Semrau <lukas@lukas-semrau.de>};
+
+      \node[below=4\baselineskip, align=center, text width=0.7\paperwidth, draw=theme, inner sep=2em, text=theme](example) at (author)
+        {%
+          \tableofcontents%
+        };
+        
+        \node[below=20\baselineskip, align=center, text width=0.7\paperwidth, draw=theme, inner sep=2em, text=theme](example) at (author)
+        {%
+          Name \qquad \fillin[][5in]
+        };
+
+    \end{tikzpicture}
+  }
+\newpage
+
+\section{Reelle Zahlen}
+\begin{questions}
+
+\titledquestion{Definitionsmengen angeben}[6] Geben sie jeweils die maximale Definitionsmenge $D$ der jeweiligen Terme an.
+\begin{multicols}{3}
+\begin{parts}
+\part $\sqrt{x^2}$
+\part $(\sqrt{x})^2$
+\part $\sqrt{4-x^2}$
+\part $\sqrt[3]{x}$
+\part $\sqrt[2n]{x}$ mit $n\in \N$
+\end{parts}
+\end{multicols}
+\begin{be}
+Teilaufgabe (a) bis (d) werden jeweils mit 1Be bewertet, (e) wird aufgrund der Verallgemeinerung mit 2Be bewertet.
+\end{be}
+\titledquestion{Betragsstriche}
+\begin{parts}
+\part [3] Müssen Betragsstriche gesetzt werden? Kreuzen Sie an, wenn diese gesetzt werden müssen.
+\begin{oneparcheckboxes}
+\choice $\sqrt{x^2}$
+\choice $\sqrt{x}^2$
+\choice $\sqrt{x^3}$
+\end{oneparcheckboxes}
+\droppoints
+\begin{be}
+Jedes Kästchen wird mit 1Be bewertet, wird die richtige Antwort gegeben, erhält man diese Bewertungseinheit.
+\end{be}
+\part[2] Begründen Sie, weshalb folgender Satz nicht gilt: \textit{Für eine Zahl $a\in \R$ gilt: $\sqrt{a^2}=a$}. \droppoints
+\part[8] Vereinfachen Sie. (Setzen Sie nur dann Betragsstriche, wenn sie unbedingt nötig sind!) \droppoints
+\begin{subparts}
+\begin{multicols}{4}
+\subpart $\sqrt{16x^2}$
+\subpart $\sqrt{3u^3}:\sqrt{u}$
+\subpart $\sqrt{(-x-1)^2}$
+\subpart $\sqrt{3a}\x \sqrt{3a}$
+\end{multicols}
+\end{subparts}
+\begin{be}
+Es können je 2Be erreicht werden.
+\end{be}
+\end{parts}
+\titledquestion{Die Menge der reellen Zahlen / Zahlenmengen}
+\begin{parts}
+\part[6] Welche Rechenoperationen sind in der jeweiligen Zahlenmengen (zusätzlich zur vorherigen) möglich? \droppoints
+\begin{subparts}
+\subpart natürliche Zahlen:\quad \fillin[][3.5in]
+\subpart ganze Zahlen:\quad \fillin[][3.5in]
+\subpart rationale Zahlen:\quad \fillin[][3.5in]
+\subpart reelle Zahlen:\quad \fillin[][3.5in]
+\end{subparts}
+\begin{be}
+Jede richtige Rechenoperation ergibt 1Be.
+\end{be}
+\part[4] Welche Aussagen sind wahr? Kreuzen Sie jede richtige an.\droppoints
+\begin{oneparcheckboxes}
+\choice $0\in \N$
+\choice $\sqrt{-3^2}\notin \R$
+\choice $-1.6\overline{34}\in \mathbb Q$
+\choice $\sqrt{121} \in \N$
+\end{oneparcheckboxes}
+
+\begin{be}
+Jedes Kästchen wird mit 1Be bewertet, wird die richtige Antwort gegeben, erhält man diese Bewertungseinheit.
+\end{be}
+\end{parts}\pagebreak
+\titledquestion{Umformungen und Vereinfachen}
+\begin{parts}
+\part[3] Welche Paare haben den gleichen Wert?\\ (Notieren Sie die Ergebnisse wie folgt: \textsf{ X - Y - Z}) \droppoints
+\begin{oneparchoices}
+\choice $\sqrt{112}$
+\choice $\sqrt{7}\x \sqrt{28}$
+\choice $9\sqrt{7}-\sqrt{63}$
+\choice $42\sqrt{7}:3\sqrt{7}$
+\choice $42/\sqrt{7}$
+\choice $\sqrt{4\x2\x14}$
+\choice $(\sqrt{7})^2\x (\sqrt{2})^2$
+\end{oneparchoices}
+\fillwithlines{1in}
+\begin{be}
+Jedes korrekte Paar wird mit einer Bewertungseinheit bewertet.
+\end{be}
+\part[9] Vereinfache. (machen Sie den Nenner ggf. rational; schreiben Sie immer als Wurzel, falls idese benötigt wird) \droppoints
+\begin{subparts}
+\subpart $(\sqrt{a-1}-\sqrt{a+1})(\sqrt{a+1}+\sqrt{a-1})$
+\begin{multicols}{2}
+\subpart $1/\sqrt{a}$
+\subpart $(a-1):(\sqrt{a}+1)$
+\subpart $\sqrt[n]{\sqrt[3]{a}}$
+\subpart $\left( \sqrt[3]{2^4} \right)^\frac12$
+\end{multicols}
+\end{subparts}
+\begin{be}
+i, iii - v: 2Be // ii: 1Be
+\end{be}
+\end{parts}
+\pagebreak
+\section{Satzgruppe des Pythagoras}
+\begin{figure}[h]
+    \centering
+    \caption{Das folgende rechtwinklige Dreieck wird im folgenden immer wieder betrachtet.}
+    \input{bilder/rw-dreieck}
+    \label{fig:21}
+\end{figure}
+
+\titledquestion{Satz des Pythagoras}
+\begin{parts}
+\part[2] In einem Gleichschenkligen Dreieck mit 16 langer Basis misst die Höhe auf die Basis 15. Wie lange ist der Schenkel dieses Dreiecks. Fertige eine Skizze an. \droppoints
+\part[3] Die basiswinkel eines gleichschnekligen Dreiecks betragen $60^\circ$, die Länge der Basis beträgt 5cm. Welche Länge hat die Höhe auf die Basis? \droppoints 
+\part[2] Von einem Rechteck ist der Flächeninhalt $A=117.6$ und eine Seitenlänge $b=10.5$ gegeben. Berechnen Sie die Diagonale $d$ des Rechtecks. \droppoints
+\part[3] In einem Prospekt ist Angegeben: \textit{``LCD-Fernseher 16:9, 80cm''} Dabei gibt 16:9 das Verhältnis der Seitenlängen an. Passt der Bildschirm in eine Schranknische der Länge 75cm? Begründen Sie. \droppoints
+\part[6] Zeichnen die Punkte $P$ und $Q$ jeweil in ein Koordinatensystem. Und bestimmen Sie ihren Abstand durch Rechnung. \droppoints
+\begin{subparts}
+\subpart $P(2\mid 1);\quad Q(5\mid  5)$
+\subpart finden Sie eine allgemeine Formel: $P(x_1\mid y_1);\quad Q(x_2\mid  y_2)$
+\end{subparts}
+\begin{be}
+Für das korrekte KS: 1Be; für das Zeichnen der Punkte: 1Be; für die Rechnung in i: 1Be und in ii: 2Be.
+\end{be}
+\end{parts}
+\titledquestion{Kehrsatz zum Satz des Pythagoras}
+\begin{parts}
+\part[3] Prüfen Sie, ob ein Dreieck mit den Seitenlängen $(a,b,c)$ Rechtwinklig ist. \droppoints
+\begin{subparts}
+\begin{multicols}{3}
+\subpart $(28,45,53)$
+\subpart $(16,62,64)$
+\subpart $(286,290,48)$
+\end{multicols}
+\end{subparts}
+\begin{be}
+Je Teilaufgabe 1Be.
+\end{be}
+\part[4] Es gelten folgende Verhältnisse: $m^2-n^2$, $b=2mn$ und $c = m^2+n^2$. Beweisen Sie folgende Aussage: \textit{Für $m, n\in \N$ mit $m>n$ ist das Dreieck rechtwinklig.} \droppoints
+\end{parts}\pagebreak
+\titledquestion{Berechnungen von Seitenlängen}[9]
+Berechne die fehlenden Größen.\footnote{Ein Beispieldreieck finden Sie unter \url{www.lukas-semrau.de/hohensatz-dreieck/}}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c|c}
+         &a&b&c&p&q&h&A  \\ \hline \hline
+         a&&&&1.6&10.0&& \\ \hline 
+         b&&&&4.0&&6.0&39.0 
+    \end{tabular}
+    \caption{Tabelle zur Aufgabe 2.3}
+    \label{tab:my_label}
+\end{table}
+\titledquestion{Berechnungen an Figuren und Körpern.}
+\begin{parts}
+\part[2] Bestimmen Sie $d$. \droppoints
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+%ymajorgrids=true,
+%xmajorgrids=true,
+xmin=-1,
+xmax=3.5,
+ymin=-1,
+ymax=3.5,
+xtick={1,2,2.8284},
+xticklabels={$1$,$2$, $d$},
+ytick=\empty,
+]
+
+\draw[color = theme, line width = 1pt] (0,0) -- (2,0) -- (2,2) -- (0,2) -- cycle;
+\draw[dashed, color = red, line width = 1pt] (0,0) -- (2,2);
+\draw[dashed, color = red, line width = 1pt] (2.8284,0) arc (0:45:2.8284cm);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\part[6] Es wird eine Elfmeter auf ein Tor mit den Maßen $732\mathrm{cm}\times244\mathrm{cm}$.
+Der Ball wird im oberen rechten Eck versenkt. Berechnen Sie den Weg, der den Ball zurückgelegt hat. \droppoints
+\end{parts}
+\pagebreak
+\section{Quadratische Funktionen und Gleichungen}
+\titledquestion{Parabeln verschieben}
+\begin{parts}
+\part[2] Bestimmen Sie den Funktionsterm einer Normalparabel, die \droppoints
+\begin{subparts}
+\subpart ... um 2 nach links und 3 nach oben verschoben ist.
+\subpart ... um 3 nach unten und um 4 nach rechts verschoben ist.
+\end{subparts}
+\begin{be}
+Je korrekten Term: 1Be
+\end{be}
+\part[3] Geben Sie den Funktionsterm an. \droppoints
+\begin{subparts}
+\begin{multicols}{3}
+\subpart $S(-3\mid 0)$
+\subpart $S(2.7\mid \sqrt{2})$
+\subpart $S(-0.8\mid 2)$
+\end{multicols}
+\end{subparts}
+\begin{be}
+Je korrekten Term: 1Be
+\end{be}
+\part[4] Prüfen Sie, ob die Parabel $x\mapsto x^2-12+36$ eine in $x$-Richtung verschobene Normalparabel ist. \droppoints
+\end{parts}
+\titledquestion{Scheitel / Nullstellen}[12]
+Bestimme den Scheitelpunkt und die Nullstellen des Graphens von $\mathrm{G}_f$.
+\begin{parts}
+\begin{multicols}{3}
+\part $f_1(x)=(x+2)^2-9$
+\part $f_2(x)=t^2+3t$
+\part $f_3(x)=x^2+6x+4$
+\end{multicols}
+\end{parts}
+\titledquestion{Textaufgaben}
+\begin{parts}
+\part[3]Das Produkt zweier positiven Zahlen, die sich um 6 unterscheiden, beträgt 6075. Wie lauten die beiden Zahlen? \droppoints
+\part[4] Das Produkt zweier aufeinander folgender natürlicher Zahlen ist um 461 größer als ihre Summe. \droppoints
+\part[3] Wurde in der Rechnnung wirklich ein Fehler gemacht? Begründen Sie. \droppoints
+\begin{center}
+\boxed{
+\begin{aligned}
+    2x^2-8x&= 0 \quad |:x \\
+    2x-8&=0 \\
+    x&=4 \\
+    L&=\{4\} \quad \mathbf{f.}
+\end{aligned}
+}
+\end{center}
+\end{parts}
+\titledquestion{Lineare Gleichungssystem mit drei Variablen}[9]
+Lösen Sie das Gleichungssystem 
+\begin{align}
+    \begin{cases}
+    x+4z&=4y \\
+    2x+3z&=5y \\
+    x&=y+z
+    \end{cases}
+\end{align}
+\titledquestion{Funktionsterm bestimmen}[4]
+Bestimmen Sie die Gleichung einer Parabel, die durch folgende Punkte geht:
+$$P_1(-1\mid0), \quad P_2(2\mid 0)\quad \text{und} \quad P_3(3\mid 2)$$
+\pagebreak
+\titledquestion{Extremwertprobleme}
+\begin{parts}
+\part[2]Für welche ganze Zahl ist das Produkt aus Vorgänger und Nachfolger am kleinsten. \droppoints
+\part[2]Für welche reelle Zahl ist das Produkt aus Vorgänger und Nachfolger am kleinsten. \droppoints 
+\part[6] Gegeben ist eine Funktion 
+\begin{align}
+    f(x)=-\frac{1}{2}x+2.
+\end{align}
+Für $a\in ]0;4[$ mit $a\in \R$ werden folgende Punkte definiert: $O(0\mid 0)$, $P(a\mid f(a))$, $P_1(0\mid f(a))$ und $P_2(a\mid 0)$.\\ \medskip 
+Wann ist der Flächeninhalt des Rechtecks $OP_2PP_1$ am größten? \droppoints
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+%ymajorgrids=true,
+%xmajorgrids=true,
+xmin=-1,
+xmax=5,
+ymin=-1,
+ymax=3,
+xtick={2},
+xticklabels={\color{theme} $a$},
+ytick={1},
+yticklabels={\color{theme} $f(a)$}]
+%Below the red parabola is defined
+\addplot [
+    domain=-1:5, 
+    samples=100, 
+    color=black,
+]{-1/2*x+2};
+
+\draw[color = theme,fill = theme!30, line width = 1pt] (0,0) -- (2,0) -- (2,1) -- (0,1) -- cycle;
+\draw [fill = black, color = black] (2,1) circle (1pt) node[above right]{$(a\mid f(a)$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{parts}
+\titledquestion{Schnittprobleme}
+\begin{parts}
+\part[6]Geben Sie die Schnittpunkte der Funktionen \droppoints
+\begin{align*}
+    f(x)=\frac{1}{x}\quad \text{und} \quad g(x)=x-1.5\quad \text{an}.
+\end{align*}
+\part[9] Gegeben sind die Funktionen $f:x\mapsto -x^2+4x-3$ und $h_a:x\mapsto ax$. \droppoints
+\begin{subparts}
+\subpart Untersuchen Sie für welche  $a\in \R$ die Graphen einen, zwei oder keinen Schnittpunkt haben.
+\subpart Bestimmen Sie die Koordinaten des Berührpunktes $B$ von $h_a$ und $f$.
+\end{subparts}
+\end{parts}
+\pagebreak
+\section{Wahrscheinlichkeit bei mehrstufigen Zufallsexperimenten}
+%\qformat{\color{theme}\textbf{Aufgabe \thequestion:}\dotfill\totalpoints BE}
+\titledquestion{Urnen} Eine Urne enthält zwei (identische) blaue Kugeln mit der Aufschrift ``T'' und zwei (identische) rote Kugeln mit der Aufschrift ``O''. Renate zieht aus der Urne zufällig die vier Kugeln. 
+\begin{parts}
+\part[4] Zeichne eine Baumdiagramm, das den Sachverhalt erklärt. \droppoints
+\part[1]  Berechnen Sie die Wahrscheinlichkeit $p(\text{``Otoo''})$, dass das Wort ``Otto'' gezogen wird. \droppoints
+\end{parts}
+\titledquestion{Playlists}[4] In einer Playlist eines Smartphones befinden sich 20 Lieder, darunter genau fünf mit
+deutschsprachigem Text. Die 20 Lieder werden in zufälliger Reihenfolge ohne Wiederholung
+abgespielt. $p$ ist die Wahrscheinlichkeit dafür, dass die ersten drei gespielten Lieder einen
+deutschsprachigen Text haben. \\
+Erläutern Sie, warum der Ansatz $p=(1/4)^3$ falsch ist, und geben Sie einen richtigen Ansatz zur Berechnung von $p$ an.
+\titledquestion{Basketballspiel}[4] Bei einem Basketballspieler sinkt die Trefferwahrscheinlichkeit bei einem Freiwurf während des 40-minütigen Spiels linear von anfänglich 70\% bis 50\%. Er bekommt nach der 8., 22., 38. Spielminute je einen Freiwurf zugesprochen. Mit welcher Wahrscheinlichkeit verwandelt er alle einen/zwei/drei Freiwürfe.
+\titledquestion{Würfelwurf}[2] Ein normaler Würfel wird 6-mal geworfen. Mit welcher Wahrscheinlichkeit werden lauter verschiedene Augenzahlen geworfen.
+\pagebreak
+\section{Trigonometrie}
+\titledquestion{Berechnungen an Dreiecken.}[9]
+Berechnen Sie die fehlenden Seiten und Winkel eines rechtwinkligen Dreiecks ABC mit Hypotenuse $c$ und den Katheten $a$ und $b$. (Geben Sie dabei immer den vollständigen Rechenweg an.)
+\begin{parts}
+\begin{multicols}{3}
+\part $b = 4.8;\; \beta = 42^\circ$
+\part $c = 7.3;\; \alpha = 72^\circ$
+\part $c = 3.3;\; \alpha = 5.7^\circ$
+\end{multicols}
+\end{parts}
+\titledquestion{Beziehungen zwischen Sinus, Kosinus und Tangens.}
+Vereinfachen Sie folgende Terme.
+\begin{parts}
+\begin{multicols}{3}
+\part[2] $\sin \alpha - \sin \alpha \x \cos^2\alpha$
+\part[3] $\frac{\sin^4\alpha-\cos^4\alpha}{\sin^2\alpha - \cos^2\alpha}$
+\part[2] $1-\frac{1}{\sin^2\alpha}$
+\end{multicols}
+\end{parts}
+\begin{be}
+(a) 2; (b) 3; (c) 2
+\end{be}
+\titledquestion{Steigung}
+Eine lineare Funktion besitzt den Funktionsterm $f:x\mapsto mx+t$. Die Steigung $m$ wird durch die Gleichung \begin{align}
+    m&=\frac{\Delta y}{\Delta x} = \frac{f(b)-f(a)}{b-a}
+\end{align}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-1,
+xmax=5,
+ymin=-1,
+ymax=4,
+xtick={2,4},
+xticklabels={\color{theme} $a$, \color{theme} $b$},
+ytick={2,3},
+yticklabels={\color{theme} $f(a)$, \color{theme} $f(b)$}]
+%Below the red parabola is defined
+\addplot [
+    domain=1.9:5, 
+    samples=100, 
+    color=black,
+]{1/2*x+1};
+\addplot [
+    domain=-1:1.05, 
+    samples=100, 
+    color=black,
+]{1/2*x+1};
+
+\draw[color = theme,fill = theme!30, line width = 1pt] (2,2) -- (4,2) -- (4,3) -- cycle;
+\draw [fill = black, color = black] (4,3) circle (1pt) node[above left]{$B(b\mid f(b)$};
+
+\draw [fill = black, color = black] (2,2) circle (1pt) node[below, xshift = -0.1cm]{$A(a\mid f(a)$};
+
+\draw [fill = black, color = black] (4,2) node[below right]{$C$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\begin{parts}
+\part[2]Zeigen Sie: $\tan \alpha = m$ \droppoints
+\part[2]Berechne jeweils den Steigungswinkel der Geraden: \droppoints
+\begin{multicols}{2}
+\begin{subparts}
+\subpart $y = 2x+5$
+\subpart $y= \sqrt{3}x-2$
+\end{subparts}
+\end{multicols}
+\begin{be}
+Je 1Be
+\end{be}
+\part[6] Bestimme die Gleichung der Geraden, die durch den Punkt $P$ geht und den Steigungswinkel $\alpha$ hat. \droppoints
+\begin{multicols}{2}
+\begin{subparts}
+\subpart $P(1\mid 2)$ und $\alpha = 30^\circ$
+\subpart $P(-2\mid -3)$ und $\alpha = 60^\circ$
+\end{subparts}
+\end{multicols}
+\begin{be}
+Je 3Be
+\end{be}
+\end{parts}
+\end{questions}
+\end{document}
