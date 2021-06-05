@@ -1,0 +1,24 @@
+\definecolor{qqqqff}{rgb}{0,0,1}
+\definecolor{qqwuqq}{rgb}{0,0.39215686274509803,0}
+\definecolor{ccqqqq}{rgb}{0.8,0,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-0.5,-0.5) rectangle (5.5,2.5);
+\draw[line width=2pt,color=ccqqqq,fill=ccqqqq,fill opacity=0.1] (3.7367336268050644,1.8683668134025322) -- (3.8683668134025324,1.6051004402075968) -- (4.131633186597468,1.7367336268050646) -- (4,2) -- cycle; 
+\draw [shift={(5,0)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.10000000149011612] (0,0) -- (116.56505117707799:0.5676282072462927) arc (116.56505117707799:180:0.5676282072462927) -- cycle;
+\draw [shift={(0,0)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.1] (0,0) -- (0:0.7568376096617235) arc (0:26.56505117707799:0.7568376096617235) -- cycle;
+\draw [line width=2pt] (0,0)-- (4,2);
+\draw [line width=2pt] (4,2)-- (5,0);
+\draw [line width=2pt] (5,0)-- (0,0);
+\draw (2.7112468590079843,-0.017280080088737635) node[anchor=north west] {$c$};
+\draw (2.3,1.8) node[anchor=north west] {$b$};
+\draw (4.565499002679207,1.3677327455922141) node[anchor=north west] {$a$};
+
+\draw (3.6,1.6) node[anchor=north west] {$\gamma$};
+\draw (4.1,0.65) node[anchor=north west] {$\beta$};
+\draw (0.7,0.4) node[anchor=north west] {$\alpha$};
+\begin{scriptsize}
+\draw [fill=black] (0,0) circle (1.5pt) node [left] {\large $A$};
+\draw [fill=black] (4,2) circle (1.5pt) node [above] {\large $C$};
+\draw [fill=black] (5,0) circle (1.5pt) node [right] {\large $B$};
+\end{scriptsize}
+\end{tikzpicture}

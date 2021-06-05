@@ -1,0 +1,16 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-10.898181818181824,-6.789090909090903) rectangle (9.974545454545456,6.810909090909086);
+\draw [line width=2pt] (-2.0006310507651457,3.9911119100686663)-- (-4.005560732780976,-3.845026774840257);
+\draw [shift={(-3.003095891773061,0.07304256761420458)},line width=2pt]  plot[domain=-1.821279668392357:1.3203129851974362,variable=\t]({1*4.044280298117153*cos(\t r)+0*4.044280298117153*sin(\t r)},{0*4.044280298117153*cos(\t r)+1*4.044280298117153*sin(\t r)});
+\draw [shift={(-3.003095891773061,0.07304256761420458)},line width=2pt]  plot[domain=1.3203129851974365:4.461905638787229,variable=\t]({1*4.044280298117152*cos(\t r)+0*4.044280298117152*sin(\t r)},{0*4.044280298117152*cos(\t r)+1*4.044280298117152*sin(\t r)});
+\draw (-4.934545454545458,4.101818181818179) node[anchor=north west] {$\mathbb{Q}$};
+\draw (-2.243636363636366,0.629090909090909) node[anchor=north west] {$\mathbb{I}$};
+\end{tikzpicture}
+\end{document}

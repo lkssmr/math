@@ -1,0 +1,20 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{ffqqqq}{rgb}{1,0,0}
+\definecolor{yqyqyq}{rgb}{0.5019607843137255,0.5019607843137255,0.5019607843137255}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\draw [color=yqyqyq,, xstep=1cm,ystep=1cm] (-11.66038057704938,-3.3450213874350885) grid (2.5317616952962387,5.902123577473021);
+\clip(-11.66038057704938,-3.3450213874350885) rectangle (2.5317616952962387,5.902123577473021);
+\fill[line width=2pt] (-7,3) -- (-7,0) -- (-4,0) -- (-4,3) -- cycle;
+\draw [line width=2pt] (-7,3)-- (-7,0);
+\draw [line width=2pt] (-7,0)-- (-4,0);
+\draw [line width=2pt] (-4,0)-- (-4,3);
+\draw [line width=2pt] (-4,3)-- (-7,3);
+\draw [line width=2pt,color=ffqqqq] (-7,0)-- (-4,3);
+\end{tikzpicture}
+\end{document}

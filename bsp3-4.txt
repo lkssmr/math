@@ -1,0 +1,29 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-2.524677080105965,
+xmax=4.227411841041781,
+ymin=-2.458117206441729,
+ymax=2.5738578070371902,
+xtick={-2,-1,...,4},
+ytick={-2,-1,...,2},]
+\clip(-2.524677080105965,-2.458117206441729) rectangle (4.227411841041781,2.5738578070371902);
+\draw[line width=2pt,smooth,samples=100,domain=-2.524677080105965:4.227411841041781] plot(\x,{0.5*((\x)-1)^(2)-1});
+\begin{scriptsize}
+\draw [fill=black] (-1,1) circle (2.5pt);
+\draw [fill=black] (3,1) circle (2.5pt);
+\draw [fill=black] (1,-1) circle (2.5pt);
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+\end{document}

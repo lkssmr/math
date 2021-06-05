@@ -1,0 +1,24 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{ffcctt}{rgb}{1,0.8,0.2}
+\definecolor{ffqqqq}{rgb}{1,0,0}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\definecolor{yqyqyq}{rgb}{0.5019607843137255,0.5019607843137255,0.5019607843137255}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\draw [color=yqyqyq,, xstep=1cm,ystep=1cm] (-16.926741102160115,-9.465502968886868) grid (12.04513711285411,9.411644160756538);
+\clip(-16.926741102160115,-9.465502968886868) rectangle (12.04513711285411,9.411644160756538);
+\draw [rotate around={0.05661369998937327:(-0.8796666306170526,-0.9929644285876958)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.14] (-0.8796666306170526,-0.9929644285876958) ellipse (8.216548913947038cm and 4.100302338227129cm);
+\draw [rotate around={0:(-2,-1)},line width=2pt,color=ffqqqq,fill=ffqqqq,fill opacity=0.14] (-2,-1) ellipse (6.864736833812212cm and 3.335357821508526cm);
+\draw [rotate around={0:(-3.5,-1)},line width=2pt,color=ffcctt,fill=ffcctt,fill opacity=0.25] (-3.5,-1) ellipse (5.054268507013355cm and 2.301223618205541cm);
+\draw [rotate around={0:(-4.5,-1)},line width=2pt] (-4.5,-1) ellipse (3.667543745546288cm and 1.0958453930622192cm);
+\draw (-5.34303718169711,-0.3297713366262894) node[anchor=north west] {$\mathbb N$};
+\draw (-0.09377701730428831,-0.48119230290685144) node[anchor=north west] {$\mathbb Z$};
+\draw (2.8589318251666738,-0.5064291306202785) node[anchor=north west] {$\mathbb Q$};
+\draw (5.332140941082522,-0.3802449920531434) node[anchor=north west] {$\mathbb R$};
+\end{tikzpicture}
+\end{document}

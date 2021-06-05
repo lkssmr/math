@@ -1,0 +1,29 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{wwwwww}{rgb}{0.4,0.4,0.4}
+\definecolor{zzttff}{rgb}{0.6,0.2,1}
+\definecolor{ffvvqq}{rgb}{1,0.3333333333333333,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.574762001421835,
+xmax=8.998952902663435,
+ymin=-5.133737778999564,
+ymax=4.982034544957503,
+xtick={-4,-3,...,8},
+ytick={-5,-4,...,4},]
+\clip(-4.574762001421835,-5.133737778999564) rectangle (8.998952902663435,4.982034544957503);
+\draw[line width=2pt,color=ffvvqq,smooth,samples=100,domain=-4.574762001421835:8.998952902663435] plot(\x,{2*(\x)^(2)});
+\draw[line width=2pt,color=zzttff,smooth,samples=100,domain=-4.574762001421835:8.998952902663435] plot(\x,{((\x)+1)^(2)-1});
+\draw[line width=2pt,color=wwwwww,smooth,samples=100,domain=-4.574762001421835:8.998952902663435] plot(\x,{0.5*((\x)-2)^(2)-3});
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,23 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{ffqqqq}{rgb}{1,0,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-4.65168445643471,-6.0019545254773) rectangle (5.344960604012146,3.994690534969555);
+\fill[line width=2pt] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+\fill[line width=2pt] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+\fill[line width=2pt] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+\fill[line width=2pt] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+\fill[line width=2pt] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+\fill[line width=2pt] (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
+\draw [line width=2pt] (0,4)-- (0,0);
+\draw [line width=2pt] (0,0)-- (4,0);
+\draw [line width=2pt] (4,0)-- (4,4);
+\draw [line width=2pt] (4,4)-- (0,4);
+\draw [line width=2pt,color=ffqqqq] (0,0)-- (4,4);
+\end{tikzpicture}
+\end{document}
